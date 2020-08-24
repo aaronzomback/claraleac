@@ -3,12 +3,10 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 
 
-RewriteRule ^(.*/|)[\s%20]+(.+)$ $1$2 [L]
+RewriteCond %{QUERY_STRING} "^([^/]*?)(?:/|%20)+([^/]+?(?:/|%20)+.*)$"
+RewriteRule ^ %{REQUEST_URI}?%1-%2 [N,NE]
 
-
-RewriteRule ^(.+?)[\s%20]+(/.*|)$ $1$2 [L]
-
-
-RewriteRule ^([^\s%20]*)(?:\s|%20)+(.*)$ $1-$2 [L,R]
+RewriteCond %{QUERY_STRING} "^([^/]*?)(?:/|%20)+([^/]+?)/?$"
+RewriteRule ^ %{REQUEST_URI}?%1-%2/ [L,R=302,NE]
 
 RewriteRule ^([^\.]+)$ $1.html [NC,L]
