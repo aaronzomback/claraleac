@@ -53,6 +53,11 @@ gulp.task("images", function() {
   .pipe(gulp.dest("dist/img"))
 })
 
+gulp.task("htaccess", function() {
+  return gulp.src("src/.htaccess")
+  .pipe(gulp.dest("dist/.htaccess"))
+})
+
 gulp.task("html", function () {
   return gulp .src("src/*.html")
   .pipe(gulp.dest("dist"))
@@ -69,6 +74,7 @@ gulp.task( "watch", function () {
   gulp.watch("src/css/*", ["css"])
   gulp.watch("src/fonts/*", ["fonts"])
   gulp.watch("src/img/*", ["images"])
+  gulp.watch("src/.htaccess", ["htaccess"])
 })
 
 gulp.task("deploy", function() {

@@ -4,7 +4,17 @@
   src: url(fonts/RobotoMono-Regular.ttf);
 }
 
+@font-face {
+  font-family: "Karla-Regular";
+  font-weight: 400px;
+  src: url(fonts/Karla-Regular.ttf);
+}
+
 
 body {
-  font-family: "RobotoMono-Regular";
+  font-family: "karla-Regular";
+}
+
+nav a {
+  font-family: "Karla-Regular";
 }
