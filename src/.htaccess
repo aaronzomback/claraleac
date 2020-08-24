@@ -2,10 +2,10 @@ Options -MultiViews
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 
-RewriteCond %{QUERY_STRING} "^([^/]*?)(?:/|%20)+([^/]+?(?:/|%20)+.*)$"
-RewriteRule ^ %{REQUEST_URI}?%1-%2 [N,NE]
 
-RewriteCond %{QUERY_STRING} "^([^/]*?)(?:/|%20)+([^/]+?)/?$"
-RewriteRule ^ %{REQUEST_URI}?%1-%2/ [L,R=302,NE]
+RewriteRule ^(.*/|)[\s%20]+(.+)$ $1$2 [L]
+
+
+RewriteRule ^(.+?)[\s%20]+(/.*|)$ $1$2 [L]
 
 RewriteRule ^([^\.]+)$ $1.html [NC,L]
