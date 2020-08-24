@@ -1,11 +1,12 @@
 Options -MultiViews
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
 
 
-RewriteRule ^(.*/|)[\s%20]+(.+)$ $1$2 [L]
+RewriteRule ^([^\s%20]*)(?:\s|%20)+(.*)$ $1-$2 [N,E=Redirect:1]
 
+RewriteCond {ENV:Redirect} ^1$
+RewriteRule ^(.*)$ http://%{HTTP_HOST}/$1 [R,L]
 
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
 RewriteRule ^(.+?)[\s%20]+(/.*|)$ $1$2 [L]
-
-RewriteRule ^([^\.]+)$ $1.html [NC,L]
